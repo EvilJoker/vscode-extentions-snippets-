@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:snippets-.helloWorld"
+    "onCommand:snippets-.helloWorld" 
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -19,7 +19,29 @@
         "command": "snippets-.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "snippets-",
+          "title": "snippets+",
+          "icon": "resources/snippets+.svg"
+        }
+      ]
+    },
+    "views": {
+      "snippets-": [
+        {
+          "id": "snippets--explor",
+          "name": "snippets"
+        },
+        {
+          "id": "snippets--other",
+          "name": "other"
+        }
+      ]
+    }
+
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

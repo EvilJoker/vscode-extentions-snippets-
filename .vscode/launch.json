@@ -7,13 +7,14 @@
 
         {
             "args": [
+                "--disable-extensions", // 禁用其他插件
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ],
             "name": "启动扩展",
             "outFiles": [
                 "${workspaceFolder}/out/**/*.js"
             ],
-            "preLaunchTask": "npm: compile-tests",
+            "preLaunchTask": "npm: package",
             "request": "launch",
             "type": "extensionHost"
         },
