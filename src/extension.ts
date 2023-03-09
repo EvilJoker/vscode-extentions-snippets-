@@ -23,6 +23,10 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 	// 注册 item
 	vscode.window.registerTreeDataProvider('snippets--explor', new ExplorDataProvider());
+	// item 菜单
+	vscode.commands.registerCommand('snippets-.item_edit', () => vscode.window.showInformationMessage(`Call edit`));
+	vscode.commands.registerCommand('snippets-.item_delete', () => vscode.window.showInformationMessage(`Call edit`));
+	vscode.commands.registerCommand('snippets-.item_insert', () => vscode.window.showInformationMessage(`Call edit.`));
 }
 
 // This method is called when your extension is deactivated

@@ -18,7 +18,20 @@
       {
         "command": "snippets-.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "snippets-.item_edit",
+        "title": "Edit"
+      },
+      {
+        "command": "snippets-.item_delete",
+        "title": "Delete"
+      },
+      {
+        "command": "snippets-.item_insert",
+        "title": "Insert"
       }
+
     ],
     "viewsContainers": {
       "activitybar": [
@@ -39,6 +52,22 @@
           "id": "snippets--other",
           "name": "other"
         }
+      ]
+    },
+		"menus": {
+      "view/item/context": [
+				{
+					"command": "snippets-.item_edit",
+					"when": "view == snippets--explor && viewItem == snipitem"
+				},
+				{
+					"command": "snippets-.item_delete",
+					"when": "view == snippets--explor && viewItem == snipitem"
+				},
+				{
+					"command": "snippets-.item_insert",
+					"when": "view == snippets--explor && viewItem == snipitem"
+				}
       ]
     }
 

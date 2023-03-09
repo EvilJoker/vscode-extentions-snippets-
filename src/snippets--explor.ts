@@ -30,7 +30,8 @@ export class SnipItem extends vscode.TreeItem {
         let collapsibleState = vscode.TreeItemCollapsibleState.None
         super(label, collapsibleState);
     }
-
+    // item 的
+    contextValue = 'snipitem';
 }
 
 

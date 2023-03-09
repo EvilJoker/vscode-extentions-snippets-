@@ -14,3 +14,20 @@ ui https://code.visualstudio.com/api/ux-guidelines/views#links
 api https://code.visualstudio.com/api/references/contribution-points#contributes.views
 demo https://github.com/microsoft/vscode-extension-samples/tree/main/tree-view-sample
 
+# 悬浮菜单
+> when 来触发： 只 应用在 menus, 但是 enablement 应用在所有 menus (甚至 keybinding)
+> command 定义 动作
+> submenu 子菜单
+> group 定义 itens 的排序
+> navigation group 是特殊，被置于顶层
+
+ui  https://code.visualstudio.com/api/ux-guidelines/context-menus
+api https://code.visualstudio.com/api/references/contribution-points#contributes.menus
+> built-in 的menu
+
+给 view/item/item 添加菜单
+https://code.visualstudio.com/api/references/contribution-points#contributes.views
+
+方式：package.json 定义 command; 配置package.json "view/item/context"; ts 实现 command
+
+其他： inline 是 timeline 排列的样式
