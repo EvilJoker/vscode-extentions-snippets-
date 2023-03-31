@@ -6,4 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+
+## [0.0.1] - 2023-03-30
+
+### Added
+
+- 0.0.1 初始化完成，新增树视图，展示本地代码条目
+
+

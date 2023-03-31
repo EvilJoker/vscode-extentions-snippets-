@@ -1,14 +1,24 @@
 {
-  "name": "snippets-",
-  "displayName": "snippets+",
+  "name": "snippets-X",
+  "displayName": "snippet+",
   "description": "基于 vscode snippets 的代码片段管理工具",
   "version": "0.0.1",
+  "publisher": "AshtonSun",
   "engines": {
     "vscode": "^1.54.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages",
+    "Snippets"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvilJoker/vscode-extentions-snippets-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EvilJoker/vscode-extentions-snippets-/issues"
+  },
+  "homepage": "https://github.com/EvilJoker/vscode-extentions-snippets-#readme",
   "activationEvents": [
     "onCommand:snippets-.helloWorld" 
   ],
