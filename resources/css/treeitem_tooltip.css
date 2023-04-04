@@ -1,0 +1,4 @@
+.monaco-tooltip .monaco-tree .monaco-tree-row .monaco-icon-label .monaco-icon-label-description-container {
+    max-width: 400px; /* 修改最大宽度 */
+    max-height: 200px; /* 修改最大高度 */
+}

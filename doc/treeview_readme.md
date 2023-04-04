@@ -35,3 +35,6 @@ export class MyTreeDataProvider implements vscode.TreeDataProvider<MyTreeItem> {
   getTreeItem(element: MyTreeItem): vscode.TreeItem {
    
 ```
+
+# tree_view 的 group 介绍
+https://code.visualstudio.com/api/extension-guides/tree-view#view-actions

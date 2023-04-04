@@ -1,24 +1,25 @@
 import * as vscode from 'vscode';
+import { SnippetInstance } from '../entry/model';
 import { UserSnippetService } from '../service/UserSnippetService';
 
 // 数据结构： 父-子
 export class SnipItem extends vscode.TreeItem {
-    label_str?: string ;
     name?: string;
-    uri?: vscode.Uri;
-    children?: SnipItem[] = []
+    children?: SnipItem[] | null;
+    isSnip?: boolean;// 是否是叶子节点
+    snipInst?: SnippetInstance;
 
-    constructor(label : string, collapsibleState_str?: string) {
+    constructor(label: string, isSnip?: boolean, snipInst?: SnippetInstance) {
 
-        let collapsibleState = vscode.TreeItemCollapsibleState.None; // 默认不可折叠
-        if(collapsibleState_str == 'collapsed'){
-            collapsibleState = vscode.TreeItemCollapsibleState.Collapsed;  
-        }else if(collapsibleState_str == 'expanded'){
-            collapsibleState = vscode.TreeItemCollapsibleState.Expanded;
+        let collapsibleState = isSnip ? vscode.TreeItemCollapsibleState.None : vscode.TreeItemCollapsibleState.Collapsed;  // 默认可折叠
+        super(label, collapsibleState); // label 代表显示的名字
+
+        this.isSnip = isSnip;
+        this.snipInst = snipInst;
+        if (isSnip) {
+            this.tooltip = new vscode.MarkdownString(`\n\n\`\`\`${snipInst?.scope}\n${snipInst?.body}\n\`\`\``);
         }
 
-        super(label , collapsibleState); // label 代表显示的名字
-        this.label_str = label;
     }
     // 表示该节点的上下文信息
     contextValue = 'snipitem';
@@ -46,9 +47,23 @@ export class UserViewProvider implements vscode.TreeDataProvider<SnipItem>{
         const that = this;
         // wait for onDidChangeTreeData and _onDidChangeTreeData added
         setTimeout(() => {
-            vscode.window.createTreeView((that.constructor as any).viewId, {
+            let treeView = vscode.window.createTreeView((that.constructor as any).viewId, {
                 treeDataProvider: that,
                 showCollapseAll: true,
+            });
+
+            // 监听鼠标悬停事件，设置 tooltip 大小
+            treeView.onDidChangeSelection(e => {
+                const node = e.selection && e.selection[0];
+                if (node) {
+                    const tooltip = node.tooltip;
+                    if (tooltip && tooltip instanceof vscode.MarkdownString) {
+                        tooltip.isTrusted = true; // 允许 html 标签
+    
+                        tooltip.appendMarkdown(`<style> .tooltip-hover-container { font-size: 20px; color: green; max-height: 10000px; } </style>`); // 设置 tooltip 大小
+                        console.log(tooltip.value);
+                    }
+                }
             });
         }, 0);
     }
@@ -79,17 +94,14 @@ export class UserViewProvider implements vscode.TreeDataProvider<SnipItem>{
 
 
 
-    getSnippets() : Promise<SnipItem[]>{
-        //TODO tree 的叶子数据，修改为真正的数据
-        // for(let i=0;i<6;i++){
-        //     tree.push(new SnipItem())
-        // }
+
+    getSnippets(): Promise<SnipItem[]> {
 
         let tree = UserSnippetService.getUserSnippetsTree()
-   
+
         return Promise.resolve(tree)
     }
-    
+
 
 
 }

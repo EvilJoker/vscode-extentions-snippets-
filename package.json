@@ -1,8 +1,8 @@
 {
-  "name": "snippets-X",
-  "displayName": "snippet+",
+  "name": "snippets-up",
+  "displayName": "snip+",
   "description": "基于 vscode snippets 的代码片段管理工具",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "AshtonSun",
   "engines": {
     "vscode": "^1.54.0"
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/EvilJoker/vscode-extentions-snippets-#readme",
   "activationEvents": [
-    "onCommand:snippets-.helloWorld" 
+    "onCommand:snippets-.helloWorld"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -41,7 +41,6 @@
         "command": "snippets-.item_insert",
         "title": "Insert"
       }
-
     ],
     "viewsContainers": {
       "activitybar": [
@@ -64,23 +63,22 @@
         }
       ]
     },
-		"menus": {
+    "menus": {
       "view/item/context": [
-				{
-					"command": "snippets-.item_edit",
-					"when": "view == snippets--explor && viewItem == snipitem"
-				},
-				{
-					"command": "snippets-.item_delete",
-					"when": "view == snippets--explor && viewItem == snipitem"
-				},
-				{
-					"command": "snippets-.item_insert",
-					"when": "view == snippets--explor && viewItem == snipitem"
-				}
+        {
+          "command": "snippets-.item_edit",
+          "when": "view == snippets--explor && viewItem == snipitem"
+        },
+        {
+          "command": "snippets-.item_delete",
+          "when": "view == snippets--explor && viewItem == snipitem"
+        },
+        {
+          "command": "snippets-.item_insert",
+          "when": "view == snippets--explor && viewItem == snipitem"
+        }
       ]
     }
-
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

@@ -25,7 +25,7 @@ export class UserSnippetService {
             
         }
         // 按 label 排序 
-        tree.sort((a, b) => a.label_str!.localeCompare(b.label_str!))
+        tree.sort((a , b) => (a.label as string )  !.localeCompare((b.label as string )))
 
         return tree
 
